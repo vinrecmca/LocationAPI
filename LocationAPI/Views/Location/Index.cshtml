@@ -1,0 +1,51 @@
+﻿@model LocationAPI.Models.Artech_LocationEntities
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Location Name</h2>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Location Name</title>
+    <style type="text/css">
+        table, td, th {
+            border: 1px solid green;
+        }
+
+        th {
+            background-color: Pink;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <table style="margin-left: 25%; margin-top: 10px; border: 2px solid
+LightGray;">
+        <tr>
+            <th>ID</th>
+            <th>Location Name</th>
+        </tr>
+        @foreach (var locationName in Model.LocationInfoes)
+        {
+            <tr>
+                <td>@locationName.ID</td>
+                <td>@locationName.LocationName</td>
+            </tr>
+        }
+       
+    </table>
+    <br />
+    @using (Html.BeginForm("Insert", "Location", FormMethod.Post))
+    {
+        <table style="margin-left: 25%;" cellpadding="0" cellspacing="0">
+            <tr>
+                <td><input type="submit" value="Create" /></td>
+            </tr>
+        </table>
+    }
+</body>
+</html>
+
